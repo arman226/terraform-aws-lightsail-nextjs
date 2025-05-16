@@ -13,14 +13,14 @@ Deployment of **NextJS** app on **_AWS Lightsail_**, using **_Terraform_** for i
 ```bash
 root/
 ├── .github/
-│ └── workflows/
-│ └── deploy.yml
+│   └── workflows/
+│       └── deploy.yml
 ├── sample-integration/
-│ ├── package.json
-│ ├── next.config.js
-│ └── etc...
+│   ├── package.json
+│   ├── next.config.js
+│   └── etc...
 └── terraform/
-├── main.tf
-├── variables.tf
-└── init.sh
+    ├── main.tf
+    ├── variables.tf
+    └── init.sh
 ```
