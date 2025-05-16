@@ -10,6 +10,17 @@ Deployment of **NextJS** app on **_AWS Lightsail_**, using **_Terraform_** for i
 
 ## PROJECT STRUCTURE
 
-- .github // this contains the github workflows
-- sample-integration // this contains the next js file
-- terraform // terraform configurations
+```bash
+root/
+├── .github/
+│ └── workflows/
+│ └── deploy.yml
+├── sample-integration/
+│ ├── package.json
+│ ├── next.config.js
+│ └── etc...
+└── terraform/
+├── main.tf
+├── variables.tf
+└── init.sh
+```
