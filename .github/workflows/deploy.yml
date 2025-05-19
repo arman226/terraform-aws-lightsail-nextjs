@@ -30,18 +30,19 @@ jobs:
         uses: appleboy/scp-action@v0.1.3
         with:
           host: ${{ secrets.LIGHTSAIL_IP }}
-          username: ubuntu
+          username: bitnami
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "sample-integration/*"
-          target: "/home/ubuntu/app"
+          target: "/home/bitnami/app"
 
       - name: SSH and restart app
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.LIGHTSAIL_IP }}
-          username: ubuntu
+          username: bitnami
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/app
+            cd /home/bitnami/app
             npm install
-            pm2 restart all || npm run start &
+            npm install -g pm2  # install pm2 if not already installed
+            pm2 start npm --name "nextjs-app" -- run start
