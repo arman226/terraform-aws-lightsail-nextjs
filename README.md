@@ -24,3 +24,5 @@ root/
     ├── variables.tf
     └── init.sh
 ```
+
+Authored by: Armando I. Bibay Jr.
