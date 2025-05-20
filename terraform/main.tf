@@ -10,7 +10,7 @@ resource "aws_lightsail_instance" "nextjs_app" {
   key_pair_name     = var.key_pair_name
   user_data         = file("init.sh")
 }
-# 🔓 Open port 22 for SSH
+# 🔓 Open port 22 for SSH and 3000 for public access
 resource "aws_lightsail_instance_public_ports" "nextjs_app_ssh" {
   instance_name = aws_lightsail_instance.nextjs_app.name
 
@@ -19,12 +19,6 @@ resource "aws_lightsail_instance_public_ports" "nextjs_app_ssh" {
     from_port = 22
     to_port   = 22
   }
-}
-
-
-# 🔓 Open port 3000
-resource "aws_lightsail_instance_public_ports" "nextjs_app_ports" {
-  instance_name = aws_lightsail_instance.nextjs_app.name
 
   port_info {
     protocol  = "tcp"
@@ -32,6 +26,7 @@ resource "aws_lightsail_instance_public_ports" "nextjs_app_ports" {
     to_port   = 3000
   }
 }
+
 
 output "instance_ip" {
   value = aws_lightsail_instance.nextjs_app.public_ip_address
