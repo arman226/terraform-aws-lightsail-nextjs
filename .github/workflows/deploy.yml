@@ -42,6 +42,6 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/app
+            cd /home/ubuntu/app/sample-integration
             npm install
             pm2 restart all || npm run start &
