@@ -11,6 +11,17 @@ resource "aws_lightsail_instance" "nextjs_app" {
   user_data         = file("init.sh")
 }
 
+# 🔓 Open port 3000
+resource "aws_lightsail_instance_public_ports" "nextjs_app_ports" {
+  instance_name = aws_lightsail_instance.nextjs_app.name
+
+  port_info {
+    protocol  = "tcp"
+    from_port = 3000
+    to_port   = 3000
+  }
+}
+
 output "instance_ip" {
   value = aws_lightsail_instance.nextjs_app.public_ip_address
 }
