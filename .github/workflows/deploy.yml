@@ -47,4 +47,5 @@ jobs:
             if ! command -v pm2 &> /dev/null; then
               sudo npm install -g pm2
             fi
-            pm2 restart all || npm run start &
+            pm2 delete nextjs-app || true  # Stop and delete if already exists
+            pm2 start npm --name "nextjs-app" -- run start
