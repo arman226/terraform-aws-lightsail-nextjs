@@ -44,4 +44,7 @@ jobs:
           script: |
             cd /home/ubuntu/app/sample-integration
             npm install
+            if ! command -v pm2 &> /dev/null; then
+              sudo npm install -g pm2
+            fi
             pm2 restart all || npm run start &
